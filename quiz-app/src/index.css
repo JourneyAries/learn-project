@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Aclonica&family=Alfa+Slab+One&display=swap');
+@import 'tailwindcss';
+
+@theme {
+	--color-charcoal: #2d4356;
+	--color-english-lavender: #a78295;
+	--color-white: #fff;
+	--color-copper: #a76f6f;
+	--color-pastelPink: #eab2a0;
+
+	--font-aclonica: 'Aclonica', sans-serif;
+	--font-alfa: 'Alfa Slab One', sans-serif;
+}
