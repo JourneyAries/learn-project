@@ -1,0 +1,11 @@
+@import 'tailwindcss';
+
+@theme {
+	--backgroundImage-pray: url('./assets/bg-pray.jpg');
+}
+
+@layer utilities {
+	.bg-pray {
+		background-image: var(--backgroundImage-pray);
+	}
+}
