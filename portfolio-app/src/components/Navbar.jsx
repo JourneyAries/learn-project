@@ -30,16 +30,16 @@ const Navbar = () => {
 				className={`${
 					nav ? 'top-[70px]' : 'top-[-490px]'
 				} md:flex gap-2 md:items-center md:pb-0 pb-12 px-[30px] absolute md:static md:z-auto z-[100] bg-black-2 left-0 w-full md:w-auto transition-all duration-300 ease-in`}>
-				<li className='bg-[linear-gradient(134deg,_#3bf686_50.75%,_#4ca9ff_90.52%)] hover:text-transparent bg-clip-text xl:hover:scale-110 cursor-pointer p-2'>
+				<li className='bg-[linear-gradient(134deg,#3bf686_50.75%,#4ca9ff_90.52%)] hover:text-transparent bg-clip-text xl:hover:scale-110 cursor-pointer p-2'>
 					<a href='/#home'>Home</a>
 				</li>
-				<li className='bg-[linear-gradient(134deg,_#3bf686_50.75%,_#4ca9ff_90.52%)] hover:text-transparent bg-clip-text xl:hover:scale-110 cursor-pointer p-2'>
+				<li className='bg-[linear-gradient(134deg,#3bf686_50.75%,#4ca9ff_90.52%)] hover:text-transparent bg-clip-text xl:hover:scale-110 cursor-pointer p-2'>
 					<a href='/#about'>About</a>
 				</li>
-				<li className='bg-[linear-gradient(134deg,_#3bf686_50.75%,_#4ca9ff_90.52%)] hover:text-transparent bg-clip-text xl:hover:scale-110 cursor-pointer p-2'>
+				<li className='bg-[linear-gradient(134deg,#3bf686_50.75%,#4ca9ff_90.52%)] hover:text-transparent bg-clip-text xl:hover:scale-110 cursor-pointer p-2'>
 					<a href='/#skills'>Skills</a>
 				</li>
-				<li className='bg-[linear-gradient(134deg,_#3bf686_50.75%,_#4ca9ff_90.52%)] hover:text-transparent bg-clip-text xl:hover:scale-110 cursor-pointer p-2'>
+				<li className='bg-[linear-gradient(134deg,#3bf686_50.75%,#4ca9ff_90.52%)] hover:text-transparent bg-clip-text xl:hover:scale-110 cursor-pointer p-2'>
 					<a
 						href={`/cv-fixed-now.pdf?${new Date().getTime()}`}
 						download='My-CV.pdf'
@@ -49,12 +49,12 @@ const Navbar = () => {
 						CV/Resume
 					</a>
 				</li>
-				<li className='bg-[linear-gradient(134deg,_#3bf686_50.75%,_#4ca9ff_90.52%)] hover:text-transparent bg-clip-text xl:hover:scale-110 cursor-pointer p-2'>
+				<li className='bg-[linear-gradient(134deg,#3bf686_50.75%,#4ca9ff_90.52%)] hover:text-transparent bg-clip-text xl:hover:scale-110 cursor-pointer p-2'>
 					<a href='/#contact'>Contact</a>
 				</li>
 			</ul>
 			<div
-				className='flex xl:hidden text-2xl font-bold'
+				className='flex md:hidden text-2xl font-bold'
 				onClick={() => setNav(!nav)}>
 				{nav ? <IoClose /> : <AiOutlineMenu />}
 			</div>
