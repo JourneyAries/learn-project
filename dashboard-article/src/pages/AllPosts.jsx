@@ -1,14 +1,46 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
+import Table from '../components/Table';
+import { useSelector } from 'react-redux';
 
 const AllPosts = () => {
 	const [tab, setTab] = useState('all');
 	const tabs = [
 		{ title: 'All', value: 'all' },
-		{ title: 'Published', value: 'published' },
+		{ title: 'Publish', value: 'publish' },
 		{ title: 'Draft', value: 'draft' },
 		{ title: 'Trashed', value: 'trashed' },
 	];
+
+	const data = useSelector((state) => {
+		if (tab === 'all') {
+			return state.articles.data;
+		}
+		const datas = state.articles.data.filter((item) => item.status === tab);
+		return datas;
+	});
+
+	const configs = [
+		{
+			label: 'Title',
+			type: 'Text',
+			render: (item) => item.title,
+		},
+		{
+			label: 'Category',
+			type: 'Text',
+			render: (item) => item.category,
+		},
+		{
+			label: 'Status',
+			type: 'Text',
+			render: (item) => item.status,
+		},
+	];
+
+	const keyFn = (item) => {
+		return item.id;
+	};
 
 	return (
 		<div className='app'>
@@ -25,6 +57,16 @@ const AllPosts = () => {
 								</div>
 							);
 						})}
+					</div>
+				</div>
+				<div className='dynamicTable'>
+					<div className='table'>
+						<div className='tableHeader'>
+							<div className='title'>Article</div>
+						</div>
+						<div className='tableContent'>
+							<Table data={data} config={configs} keyFn={keyFn} />
+						</div>
 					</div>
 				</div>
 			</div>
