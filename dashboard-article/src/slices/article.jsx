@@ -1,8 +1,9 @@
-import { createSlice } from '@reduxjs/toolkit';
+/** @format */
+
+import { createSlice, nanoid } from '@reduxjs/toolkit';
 
 const article = createSlice({
 	name: 'article',
-
 	initialState: {
 		data: [
 			{
@@ -47,8 +48,36 @@ const article = createSlice({
 			},
 		],
 	},
-
-	reducers: {},
+	reducers: {
+		addArticle(state, action) {
+			state.data.push({
+				id: nanoid(),
+				title: action.payload.title,
+				content: action.payload.content,
+				category: action.payload.category,
+				status: action.payload.status,
+			});
+		},
+		editArticle(state, action) {
+			const updated = state.data.map((article) => {
+				if (article.id == action.payload.id) {
+					return { ...article, ...action.payload };
+				}
+				return article;
+			});
+			state.data = updated;
+		},
+		removeArticle(state, action) {
+			const updatedArticle = state.data.map((article) => {
+				if (article.id == action.payload) {
+					return { ...article, status: 'trash' };
+				}
+				return article;
+			});
+			state.data = updatedArticle;
+		},
+	},
 });
 
-export const articleReducer = article.reducer;
+export const { removeArticle, editArticle, addArticle } = article.actions;
+export const articlesReducer = article.reducer;

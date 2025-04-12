@@ -1,9 +1,13 @@
+/** @format */
+
 import React from 'react';
 
-const Action = ({ handleEdit, handleDelete, item }) => {
+const Action = ({item,handleEdit, handleDelete }) => {
 	return (
 		<div className='flex-icon'>
-			<div className='icons icon-edit' onClick={() => handleEdit(item.id)}>
+			<div
+				className='icons icon-edit'
+				onClick={() => handleEdit(item.id)}>
 				<svg
 					xmlns='http://www.w3.org/2000/svg'
 					width='21'
@@ -19,7 +23,9 @@ const Action = ({ handleEdit, handleDelete, item }) => {
 					/>
 				</svg>
 			</div>
-			<div className='icons icon-delete' onClick={() => handleDelete(item.id)}>
+			<div
+				className='icons icon-delete'
+				onClick={() => handleDelete(item)}>
 				<svg
 					xmlns='http://www.w3.org/2000/svg'
 					width='21'

@@ -1,56 +1,60 @@
+/** @format */
+
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
-import Table from '../components/Table';
 import { useSelector } from 'react-redux';
+import Table from '../components/Table';
 import Action from '../components/Action';
 import DeleteModal from '../components/DeleteModal';
+import { createPortal } from 'react-dom';
 
 const AllPosts = () => {
 	const [tab, setTab] = useState('all');
 	const tabs = [
 		{ title: 'All', value: 'all' },
-		{ title: 'Publish', value: 'publish' },
+		{ title: 'Published', value: 'publish' },
 		{ title: 'Draft', value: 'draft' },
-		{ title: 'Trashed', value: 'trashed' },
+		{ title: 'Trashed', value: 'trash' },
 	];
-
-	const data = useSelector((state) => {
-		if (tab === 'all') {
-			return state.articles.data;
+	const { data, modalOpen } = useSelector((state) => {
+		if (tab == 'all') {
+			return { data: state.articles.data, modalOpen: state.deleteModal.open };
 		}
-		const datas = state.articles.data.filter((item) => item.status === tab);
-		return datas;
+		const datas = state.articles.data.filter((item) => item.status == tab);
+		return { data: datas, modalOpen: state.deleteModal.open };
 	});
 
 	const configs = [
 		{
 			label: 'Title',
-			type: 'Text',
+			type: 'text',
 			render: (item) => item.title,
 		},
 		{
 			label: 'Category',
-			type: 'Text',
+			type: 'text',
 			render: (item) => item.category,
 		},
 		{
 			label: 'Status',
-			type: 'Text',
+			type: 'text',
 			render: (item) => item.status,
 		},
 		{
 			label: 'Action',
-			type: 'Text',
-			render: (item, handleEdit, handleDelete) => (
-				<Action handleEdit={handleEdit} handleDelete={handleDelete} />
+			type: 'text',
+			render: (item, handleDelete, handleEdit) => (
+				<Action
+					item={item}
+					handleDelete={handleDelete}
+					handleEdit={handleEdit}
+				/>
 			),
 		},
 	];
-
 	const keyFn = (item) => {
 		return item.id;
 	};
-
 	return (
 		<div className='app'>
 			<Navbar />
@@ -60,8 +64,8 @@ const AllPosts = () => {
 						{tabs.map((item) => {
 							return (
 								<div
-									className={`tab ${tab === item.value ? 'tab-active' : ''}`}
-									onClick={() => setTab(item.value)}>
+									onClick={() => setTab(item.value)}
+									className={`tab ${tab == item.value ? 'tab-active' : ''}`}>
 									{item.title}
 								</div>
 							);
@@ -74,12 +78,16 @@ const AllPosts = () => {
 							<div className='title'>Article</div>
 						</div>
 						<div className='tableContent'>
-							<Table data={data} config={configs} keyFn={keyFn} />
+							<Table
+								data={data}
+								config={configs}
+								keyFn={keyFn}
+							/>
 						</div>
 					</div>
 				</div>
 			</div>
-			<DeleteModal />
+			{modalOpen && createPortal(<DeleteModal />, document.body)}
 		</div>
 	);
 };

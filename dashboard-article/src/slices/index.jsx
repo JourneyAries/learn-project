@@ -1,10 +1,12 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { articleReducer } from './article';
+import { configureStore } from "@reduxjs/toolkit";
+import { articlesReducer } from "./article";
+import { deleteModalReducer } from "./deleteModal";
 
 const store = configureStore({
-	reducer: {
-		articles: articleReducer,
-	},
-});
+    reducer: {
+        articles: articlesReducer,
+        deleteModal: deleteModalReducer
+    }
+})
 
-export { store };
+export {store}

@@ -1,10 +1,12 @@
+/** @format */
+
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
 	const menus = [
 		{
-			title: 'Article',
+			title: 'Articles',
 			items: [
 				{ name: 'All Posts', path: '/' },
 				{ name: 'Add New', path: '/new' },
@@ -14,10 +16,9 @@ const Navbar = () => {
 	];
 	return (
 		<div className='navbar'>
-			<div className='navLogo padding121r'>
-				<div className='logoTitle mb-20'>Article Kita</div>
+			<div className='navLogo padding12lr'>
+				<div className='logoTitle mb-20'>KENAPARTICLE</div>
 			</div>
-
 			<div className='navMenus'>
 				{menus.map((menu) => {
 					return (
