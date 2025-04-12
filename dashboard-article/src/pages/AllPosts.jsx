@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Table from '../components/Table';
 import { useSelector } from 'react-redux';
+import Action from '../components/Action';
 
 const AllPosts = () => {
 	const [tab, setTab] = useState('all');
@@ -35,6 +36,13 @@ const AllPosts = () => {
 			label: 'Status',
 			type: 'Text',
 			render: (item) => item.status,
+		},
+		{
+			label: 'Action',
+			type: 'Text',
+			render: (item, handleEdit, handleDelete) => (
+				<Action handleEdit={handleEdit} handleDelete={handleDelete} />
+			),
 		},
 	];
 
