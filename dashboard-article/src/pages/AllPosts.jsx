@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import Table from '../components/Table';
 import { useSelector } from 'react-redux';
 import Action from '../components/Action';
+import DeleteModal from '../components/DeleteModal';
 
 const AllPosts = () => {
 	const [tab, setTab] = useState('all');
@@ -78,6 +79,7 @@ const AllPosts = () => {
 					</div>
 				</div>
 			</div>
+			<DeleteModal />
 		</div>
 	);
 };
